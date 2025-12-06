@@ -6,6 +6,8 @@ import { useSocket } from "../hooks/useSocket.hook";
 import { motion } from "framer-motion";
 import { Column } from "./Column.component";
 import { ActivityFeed } from "./ActivityFeed.component";
+import { useState } from "react";
+import { useBoardDndSensors } from "../hooks/useDndTouchHooks.hook";
 import {
   closestCenter,
   DndContext,
@@ -14,16 +16,12 @@ import {
   DragOverlay,
   DragStartEvent,
 } from "@dnd-kit/core";
-import { useState } from "react";
 
 export function BoardView() {
   const { connected, events, send } = useSocket();
   const { board, activity } = useBoardFormEvents(events);
   const [activeCardId, setActiveCardId] = useState<string | null>(null);
-
-  console.log("[BoardView] connected:", connected);
-  console.log("[BoardView] board:", board);
-  console.log("[BoardView] activity:", activity);
+  const sensors = useBoardDndSensors();
 
   if (!board) {
     return (
@@ -114,6 +112,7 @@ export function BoardView() {
         onDragStart={handleDragStart}
         onDragEnd={handleDragEnd}
         onDragCancel={handleDragCancel}
+        sensors={sensors}
       >
         <motion.div
           className="rounded-3xl border border-white/10 bg-white/5/5 bg-slate-900/40 backdrop-blur-2xl p-4 shadow-[0_18px_60px_rgba(15,23,42,0.90)] ring-1 ring-white/5"

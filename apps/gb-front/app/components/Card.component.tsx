@@ -47,7 +47,7 @@ export function DraggableCard({ card, activeCardId }: DraggableCardProps) {
       {...listeners}
       whileHover={{ y: -2, scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
-      className="rounded-xl border border-white/10 bg-slate-900/70 px-3 py-2 text-xs text-slate-100 shadow-md shadow-slate-950/40 cursor-grab active:cursor-grabbing transition-colors hover:border-emerald-300/60 hover:bg-slate-900/90"
+      className="touch-none rounded-xl border border-white/10 bg-slate-900/70 px-3 py-2 text-xs text-slate-100 shadow-md shadow-slate-950/40 cursor-grab active:cursor-grabbing transition-colors hover:border-emerald-300/60 hover:bg-slate-900/90"
     >
       <p className="font-medium text-[12px] leading-snug text-slate-50">
         {card.title}
