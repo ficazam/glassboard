@@ -11,9 +11,9 @@
     "dev:api": "cd apps/gb-api && npm run start:dev",
     "dev:web": "cd apps/gb-front && npm run dev",
     "dev": "npm run dev:api & npm run dev:web",
-    "build": "npm run build:api && npm run build:web",
-    "build:api": "cd apps/api && npm run build",
-    "build:web": "cd apps/web && npm run build"
+    "build": "npm run build:contracts && npm run build:api && npm run build:web",
+    "build:api": "cd apps/gb-api && npm run build",
+    "build:web": "cd apps/gb-front && npm run build"
   },
   "devDependencies": {
     "typescript": "^5.6.0"
